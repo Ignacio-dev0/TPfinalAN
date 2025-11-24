@@ -15,22 +15,22 @@ const faqItems = [
   {
     title: '¿Cómo se interpreta el gráfico?',
     body:
-      'Describe el comportamiento esperado del cultivo. El ascenso indica la fase exponencial de crecimiento y el descenso marca el momento en el que la población necesita intervenirse.',
+      'Dado un cultivo y sus datos, podemos determinar el nivel de crecimiento de la fase exponencial donde la bacteria se multiplica de manera extrema, la fase de aclimatacion, donde su crecimiento empieza a frenar y la fase estacionaria donde los recursos no son los suficientes para mantener el nivel de crecimiento exponencial y se estabilizan en una cantidad proporcional a la cantidad de alimento.',
   },
   {
     title: 'Guía AN Expo Final 1',
     body:
-      'Integra los controles de calidad microbiológica, los tiempos de muestreo y las métricas que presentamos para la instancia final. El simulador replica los parámetros sugeridos en la guía.',
+      'Este simulador integra los controles de calidad microbiológica y los tiempos de muestreo establecidos en la guía de trabajo final de Análisis Numérico. Cada parámetro configurable replica las condiciones experimentales sugeridas, permitiendo visualizar cómo diferentes factores ambientales (temperatura, medio de cultivo, duración) afectan el crecimiento microbiano. Las métricas calculadas incluyen proyecciones de población, niveles de confianza estadística y tendencias temporales que facilitan la toma de decisiones en laboratorio.',
   },
   {
     title: '¿Qué significa “nivel de confianza”?',
     body:
-      'Es la probabilidad de que el resultado se mantenga dentro de los márgenes esperados. A mayor nivel, mayor seguridad estadística al tomar decisiones.',
+      'El nivel de confianza representa la probabilidad estadística de que los valores reales del cultivo se mantengan dentro de los intervalos proyectados por el simulador. Un nivel de confianza del 95% indica que, si repitiéramos el experimento bajo las mismas condiciones, esperaríamos que el 95% de las veces los resultados caigan dentro del rango estimado. Niveles más altos ofrecen mayor seguridad al tomar decisiones críticas en el control de calidad microbiológica, aunque pueden requerir intervalos de predicción más amplios.',
   },
   {
     title: '¿Cómo se usa el simulador?',
     body:
-      'Completa la población inicial, la tasa estimada de crecimiento y la cantidad de intervalos a analizar. Calculamos el volumen proyectado, el nivel de confianza y graficamos la tendencia.',
+      'Para utilizar el simulador, primero selecciona la temperatura de incubación (que afecta la tasa de crecimiento), el tipo de medio de cultivo (básico, enriquecido o selectivo) y la duración del experimento. El sistema calcula automáticamente la población inicial óptima, la capacidad de carga del medio y la tasa de crecimiento ajustada. A partir de estos parámetros, genera una proyección visual que muestra las tres fases del crecimiento bacteriano, junto con métricas como el volumen proyectado al final del período, el nivel de confianza estadística y los puntos críticos de cambio de fase.',
   },
 ]
 
