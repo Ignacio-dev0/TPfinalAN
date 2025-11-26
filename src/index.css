@@ -25,6 +25,51 @@ body {
   display: block;
 }
 
+/* Bacterias - DOM based background elements (always behind content, subtle) */
+.bacteria-container {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* behind content but above page background */
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bacterium {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(70, 70, 70, 0.22);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transform: translate3d(0, 0, 0);
+  will-change: transform, opacity;
+  opacity: 0.9;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+/* slow, smooth side-to-side floating animation */
+@keyframes floatHorizontal {
+  0% { transform: translate3d(-12%, 0, 0); }
+  50% { transform: translate3d(12%, 0, 0); }
+  100% { transform: translate3d(-12%, 0, 0); }
+}
+
+/* per-bacterium variations */
+.bacterium.b1 { width: 22px; height: 22px; left: 8%; top: 18%; background: rgba(80,80,80,0.22); animation: floatHorizontal 18s linear 0s infinite; }
+.bacterium.b2 { width: 10px; height: 10px; left: 25%; top: 8%; background: rgba(64,64,64,0.22); animation: floatHorizontal 24s linear 4s infinite; }
+.bacterium.b3 { width: 16px; height: 16px; left: 40%; top: 30%; background: rgba(90,90,90,0.25); animation: floatHorizontal 22s linear 2s infinite; }
+.bacterium.b4 { width: 7px; height: 7px; left: 68%; top: 12%; background: rgba(70,70,70,0.2); animation: floatHorizontal 26s linear 6s infinite; }
+.bacterium.b5 { width: 28px; height: 28px; left: 82%; top: 24%; background: rgba(60,60,60,0.28); animation: floatHorizontal 20s linear 1s infinite; }
+.bacterium.b6 { width: 12px; height: 12px; left: 14%; top: 68%; background: rgba(85,85,85,0.2); animation: floatHorizontal 30s linear 8s infinite; }
+.bacterium.b7 { width: 30px; height: 30px; left: 55%; top: 78%; background: rgba(75,75,75,0.32); animation: floatHorizontal 34s linear 10s infinite; }
+
+/* smaller screen tweaks */
+@media (max-width: 720px) {
+  .bacterium { opacity: 0.75; }
+  .bacterium.b5, .bacterium.b7 { display: none; }
+}
+
 a {
   color: inherit;
   text-decoration: none;

@@ -7,9 +7,11 @@ const FaqSection = ({ items }) => {
       </div>
       <div className="faq-items">
         {items.map((item) => (
-          <details key={item.title}>
+          <details key={item.title} className="faq-card">
             <summary>{item.title}</summary>
-            <p>{item.body}</p>
+            <div className="faq-card-body">
+              <p>{item.body}</p>
+            </div>
           </details>
         ))}
       </div>

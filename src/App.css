@@ -1,16 +1,16 @@
 :root {
-  --mint-50: #f4f8f5;
-  --mint-100: #e5f1ea;
-  --mint-200: #cfe2d6;
-  --mint-300: #bad3c3;
-  --mint-500: #85b79c;
-  --mint-600: #5fa17d;
-  --mint-700: #3d7d5f;
-  --mint-900: #1f3f2f;
-  --gray-400: #7c8b82;
-  --gray-500: #5c6a61;
-  --gray-700: #37453d;
-  --white: #ffffff;
+  --mint-50: rgba(244,248,245,0.95);
+  --mint-100: rgba(229,241,234,0.94);
+  --mint-200: rgba(207,226,214,0.94);
+  --mint-300: rgba(186,211,195,0.93);
+  --mint-500: rgba(133,183,156,0.94);
+  --mint-600: rgba(95,161,125,0.93);
+  --mint-700: rgba(61,125,95,0.92);
+  --mint-900: rgba(31,63,47,0.92);
+  --gray-400: rgba(124,139,130,0.94);
+  --gray-500: rgba(92,106,97,0.94);
+  --gray-700: rgba(55,69,61,0.93);
+  --white: rgba(255,255,255,0.95);
   --shadow-soft: 0 40px 70px -45px rgba(14, 45, 29, 0.35);
   --shadow-float: 0 30px 60px -40px rgba(25, 63, 45, 0.55);
   --radius-lg: 30px;
@@ -19,10 +19,14 @@
   --max-content: 1400px;
 }
 
+/* Fondo animado con partículas */
 .site {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  z-index: 1; /* ensure site content sits above page-level backgrounds */
 }
 
 .top-bar {
@@ -116,6 +120,8 @@ main {
   display: flex;
   flex-direction: column;
   gap: clamp(64px, 10vw, 140px);
+  position: relative;
+  z-index: 1;
 }
 
 main > section {
@@ -564,29 +570,82 @@ main > section {
   gap: 14px;
 }
 
-.faq-items details {
-  border: 1px solid rgba(95, 161, 125, 0.28);
-  border-radius: var(--radius-md);
-  padding: clamp(18px, 3vw, 24px);
-  background: var(--mint-50);
-  box-shadow: 0 24px 60px -46px rgba(27, 61, 43, 0.45);
-  transition: transform 180ms ease;
+/* FAQ cards */
+.faq-card {
+  border: 1px solid rgba(25, 80, 45, 0.18);
+  border-radius: calc(var(--radius-md) + 6px);
+  padding: 0; /* padding will be on summary and body for clearer separation */
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,245,0.95));
+  box-shadow: 0 30px 80px -36px rgba(20, 50, 35, 0.35);
+  transition: transform 240ms cubic-bezier(.2,.9,.2,1), box-shadow 240ms ease;
+  overflow: hidden;
+  position: relative;
 }
 
-.faq-items details[open] {
-  transform: translateY(-4px);
+.faq-card[open] {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 40px 110px -40px rgba(20, 50, 35, 0.45);
 }
 
-.faq-items summary {
-  font-weight: 600;
+.faq-card summary {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 18px;
+  padding: clamp(16px, 3vw, 26px);
+  font-weight: 800;
   cursor: pointer;
   color: var(--mint-900);
+  list-style: none; /* hide default marker */
+  user-select: none;
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
 }
 
-.faq-items p {
-  margin: 12px 0 0;
+/* hide native marker in non-WebKit browsers too */
+.faq-card summary::-webkit-details-marker { display: none }
+.faq-card summary::marker { font-size: 0 }
+
+/* arrow/chevron */
+.faq-card summary::before {
+  content: '▸';
+  display: inline-block;
+  transform: rotate(0deg);
+  transition: transform 220ms cubic-bezier(.2,.9,.2,1), opacity 200ms ease;
+  color: var(--mint-700);
+  font-size: 1.12rem;
+  width: 22px;
+  text-align: center;
+}
+
+.faq-card[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.faq-card-body {
+  padding: clamp(12px, 2.4vw, 20px) clamp(18px, 3vw, 28px) clamp(18px, 3vw, 28px);
   color: var(--gray-500);
-  line-height: 1.45;
+  line-height: 1.6;
+  background: transparent;
+  border-top: 1px solid rgba(95,161,125,0.06);
+}
+
+/* accent stripe on the left to make cards more visible */
+.faq-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  background: linear-gradient(180deg, var(--mint-700), var(--mint-500));
+  border-top-left-radius: calc(var(--radius-md) + 6px);
+  border-bottom-left-radius: calc(var(--radius-md) + 6px);
+}
+
+/* hover/interaction */
+.faq-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 48px 120px -50px rgba(20, 50, 35, 0.48);
 }
 
 .contact {
@@ -855,7 +914,34 @@ main > section {
     grid-template-columns: 1fr;
   }
 
-  .faq-items details {
-    padding: 18px;
+  .faq-card {
+    padding: 0; /* keep content spacing small on phones */
   }
 }
+
+/* (old span-based debug styles removed) */
+
+/* Canvas overlay used for bacteria-style dots */
+.particles-canvas {
+  position: fixed; /* make canvas cover the whole viewport */
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* keep strictly behind all site content */
+  pointer-events: none;
+  opacity: 1;
+  mix-blend-mode: normal; /* ensure clear visibility of gray dots */
+}
+
+/* Ensure main content sits above canvas so particles are always behind all content.
+  Exclude the canvas itself from this rule so it doesn't get the same z-index. */
+.site > :not(.particles-canvas) { position: relative; z-index: 1 }
+
+/* Keep top-bar higher so it remains sticky above everything */
+.top-bar { z-index: 20 }
+
+@media (prefers-reduced-motion: reduce) {
+  .particles-canvas { opacity: 0.9; }
+}
+
+/* (old span-based debug styles removed) */

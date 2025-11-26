@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import './App.css'
 import TopBar from './components/TopBar'
+import BacteriaCanvas from './components/BacteriaCanvas'
 import HeroSection from './components/HeroSection'
 import AboutSection from './components/AboutSection'
 import SimulatorSection from './components/SimulatorSection'
@@ -108,6 +109,7 @@ const defaultSimulatorInputs = {
 
 function App() {
   const [inputs, setInputs] = useState(() => ({ ...defaultSimulatorInputs }))
+  // canvas-based background (particles) renders behind the UI by default
 
   const modelInputs = useMemo(() => {
     const temperature = Number.parseFloat(inputs.temperature)
@@ -158,8 +160,10 @@ function App() {
     setInputs(() => ({ ...defaultSimulatorInputs }))
   }
 
+
   return (
     <div className="site">
+      <BacteriaCanvas count={220} />
       <TopBar />
 
       <main>
