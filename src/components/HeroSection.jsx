@@ -21,7 +21,7 @@ const HeroSection = () => {
       </div>
       <div className="hero-stats reveal" style={{"--sr-delay":"280ms"}}>
         <div className="visual-frame reveal" style={{"--sr-delay":"320ms"}}>
-          <img src="/src/utils/images/visual-selection.png" alt="visual-selection" id="visual" />
+          <img src="/src/public/images/visual-selection.png" alt="visual-selection" id="visual" />
         </div>
       </div>
     </section>

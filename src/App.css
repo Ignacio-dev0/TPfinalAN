@@ -295,7 +295,7 @@ main > section {
 }
 
 .about-visual {
-  background-image: url('/src/utils/images/AboutusPortada.png');
+  background-image: url('/src/public/images/AboutusPortada.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
