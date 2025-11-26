@@ -20,18 +20,9 @@ const HeroSection = () => {
         </div>
       </div>
       <div className="hero-stats">
-        <article>
-          <h3>ISO 17025</h3>
-          <p>Laboratorio acreditado con cadena de custodia auditada trimestralmente.</p>
-        </article>
-        <article>
-          <h3>Resultados en horas</h3>
-          <p>Panel automatizado con alertas predictivas y comparativas históricas.</p>
-        </article>
-        <article>
-          <h3>Confianza 97%</h3>
-          <p>Modelos estadísticos supervisados por especialistas senior.</p>
-        </article>
+        <div className="visual-frame">
+          <img src="/src/utils/images/visual-selection.png" alt="visual-selection" id="visual" />
+        </div>
       </div>
     </section>
   )

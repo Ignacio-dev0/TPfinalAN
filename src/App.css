@@ -132,22 +132,17 @@ main > section {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(260px, 1.35fr) minmax(220px, 1fr);
+  /* make both columns equal width and responsive */
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
   gap: clamp(32px, 6vw, 60px);
+  /* center items vertically and horizontally so both blocks align */
   align-items: center;
+  justify-items: center;
   max-width: var(--max-content);
   margin: 0 auto;
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: clamp(16px, 4vw, 40px) clamp(12px, 12vw, 180px) auto clamp(-80px, -6vw, -40px);
-  height: clamp(200px, 24vw, 340px);
-  background: radial-gradient(circle, rgba(133, 183, 156, 0.28) 0%, transparent 72%);
-  z-index: -1;
-  animation: heroGlow 12s ease-in-out infinite alternate;
-}
+.hero::before { display: none; }
 
 .hero-copy h1 {
   font-size: clamp(2.6rem, 4vw, 3.6rem);
@@ -194,16 +189,54 @@ main > section {
 }
 
 .hero-stats {
-  background: linear-gradient(160deg, rgba(219, 235, 227, 0.92), rgba(255, 255, 255, 0.82));
   padding: clamp(24px, 4vw, 32px);
   border-radius: var(--radius-md);
   display: grid;
   gap: 18px;
-  box-shadow: var(--shadow-float);
-  animation: floatCard 9s ease-in-out infinite;
+  /* keep the visual centered with the rest of the grid — remove negative margins */
+  margin-right: 0;
 }
 
-.hero-stats article h3 {
+/* Move the visual slightly left on wider screens so it sits visually balanced
+   with the heading on the left. Tuned with media queries for responsive layout. */
+/* Remove manual horizontal nudges so both columns stay aligned and centered. */
+@media (min-width: 900px) {
+  .hero { grid-template-columns: repeat(2, minmax(320px, 1fr)); }
+}
+
+@media (min-width: 1200px) {
+  .hero { grid-template-columns: repeat(2, minmax(360px, 1fr)); }
+}
+
+/* visual frame around the image so it has a semi-white/gray background that adapts to
+   the image size and looks like the card it replaced */
+.visual-frame {
+  display: inline-block; /* shrink to fit the image */
+  padding: clamp(8px, 1.2vw, 18px);
+  /* background: rgba(250, 250, 250, 0.96); light, slightly transparent */
+  border-radius: calc(var(--radius-md) + 6px);
+  /* box-shadow: 0 22px 60px -28px rgba(27, 61, 43, 0.25); */
+  max-width: min(52vw, 640px);
+}
+
+#visual {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 560px;
+  border-radius: calc(var(--radius-md) - 6px);
+  object-fit: contain;
+}
+
+#visual{
+  width: 500px;
+ 
+  border-radius: var(--radius-md);
+  background: rgb(39, 39, 39);
+  padding: clamp(14px, 3vw, 22px);
+}
+
+/* .hero-stats article h3 {
   margin: 0 0 6px;
   color: var(--mint-700);
   font-size: 1.05rem;
@@ -213,7 +246,7 @@ main > section {
   margin: 0;
   color: var(--gray-500);
   font-size: 0.95rem;
-}
+} */
 
 .about {
   max-width: var(--max-content);
