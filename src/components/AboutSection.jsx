@@ -1,7 +1,7 @@
 const AboutSection = () => {
   return (
     <section className="about" id="quienes-somos">
-      <h2 className="section-title reveal" >Quiénes somos?</h2>
+      <h2 className="section-title reveal" >¿Quiénes somos?</h2>
       
       <div className="about-container">
         {/* left visual column */}
