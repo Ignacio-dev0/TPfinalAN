@@ -147,6 +147,8 @@ main {
   gap: clamp(10px, 4vw, 36px);
   position: relative;
   z-index: 1;
+  padding-top: 80px; 
+  overflow-y: auto;
 }
 
 main > section {
