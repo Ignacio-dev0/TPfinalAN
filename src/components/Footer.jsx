@@ -1,18 +1,35 @@
 const Footer = () => {
   return (
-    <footer className="footer">
-      <div className="footer-brand">
-        <strong>BioLab Digital</strong>
-        <span>Fijate los resultados desde el muestreo inicial hasta el cierre del ensayo.</span>
-      </div>
-      <div className="footer-links">
-        <a href="#quienes-somos">Quiénes somos</a>
-        <a href="#planes">Planes</a>
-        <a href="#faq">Preguntas frecuentes</a>
-      </div>
-      <div className="footer-copy">© 2025 BioLab Digital. Todos los derechos reservados.</div>
-    </footer>
-  )
-}
+    <>
+      <footer className="footer">
+        <div className="footer-brand">
+          <strong>BioLab Digital</strong>
+          <span>Precisión y trazabilidad para tus ensayos.</span>
+        </div>
 
-export default Footer
+        <div className="footer-copy">
+          © 2025 BioLab Digital. Todos los derechos reservados.
+        </div>
+      </footer>
+
+      <style>{`
+        
+
+        .footer-brand span {
+          display: block;
+          margin-top: 4px;
+          font-size: 0.9rem;
+          opacity: 0.75;
+        }
+
+        .footer-copy {
+          font-size: 0.8rem;
+          opacity: 0.6;
+          margin-top: 12px;
+        }
+      `}</style>
+    </>
+  );
+};
+
+export default Footer;
