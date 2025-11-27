@@ -39,28 +39,47 @@ const plans = [
   {
     name: 'Starter',
     price: 'Gratis',
-    description: 'Ideal para validar tu proceso con datos confiables desde el día uno.',
+    description: 'Ideal para estudiantes y validaciones rápidas.',
     features: [
-      'Panel en tiempo real con métricas clave',
-      'Calibración guiada del simulador',
-      'Alertas básicas por correo',
+      'Simulación de 1 cultivo a la vez',
+      'Acceso a curvas de crecimiento estándar',
+      'Panel de métricas en tiempo real',
+      'Exportación de datos básica (.CSV)',
+      'Soporte vía comunidad/foro'
     ],
     cta: 'Comenzar sin costo',
     highlighted: false,
   },
   {
-    name: 'Premium',
+    name: 'Professional',
     price: '$28.000 / mes',
-    description: 'Diseñado para laboratorios que necesitan precisión, trazabilidad y reportes automáticos.',
+    description: 'Diseñado para laboratorios pequeños e investigadores independientes.',
     features: [
-      'Reportes comparativos y descarga en PDF',
-      'Análisis por intervalos personalizados',
-      'Integración con sistemas LIMS y CRM',
-      'Soporte directo y humano 24/7',
+      'Todo lo del plan Starter, más:',
+      'Simulaciones simultáneas (hasta 5 cultivos)',
+      'Reportes comparativos y descarga en PDF profesional',
+      'Calibración guiada del simulador',
+      'Historial de experimentos (6 meses en nube)',
+      'Soporte prioritario por email (24hs)'
     ],
     cta: 'Solicitar Demo',
-    highlighted: true,
+    highlighted: false,
   },
+  {
+    name: 'Enterprise',
+    price: '$65.000 / mes',
+    description: 'Para industria farmacéutica y centros de investigación de alto rendimiento.',
+    features: [
+      'Todo lo del plan Professional, más:',
+      'Simulaciones ilimitadas y análisis predictivo con IA',
+      'Integración con sistemas LIMS y CRM',
+      'Análisis por intervalos personalizados',
+      'Acceso multi-usuario para equipos',
+      'Soporte 24/7 y consultoría técnica'
+    ],
+    cta: 'Consultar Precio',
+    highlighted: false,
+  }
 ]
 
 const mediumOptions = [

@@ -705,8 +705,8 @@ main > section {
   max-width: var(--max-content);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
 }
 
 .plan-card {
@@ -715,31 +715,56 @@ main > section {
   padding: clamp(28px, 5vw, 38px);
   background: var(--white);
   box-shadow: var(--shadow-soft);
-  display: grid;
-  gap: 18px;
+  display: flex;
+  flex-direction: column;
   animation: fadeUp 900ms ease both;
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
 }
 
-.plan-card.highlighted {
-  background: linear-gradient(160deg, rgba(229, 241, 234, 0.92), rgba(255, 255, 255, 0.92));
-  transform: translateY(-6px);
+.plan-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--mint-500), var(--mint-700));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.plan-card:hover::before {
+  transform: scaleX(1);
+}
+
+.plan-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: var(--shadow-float);
 }
 
 .plan-card header {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
 }
 
 .plan-card h3 {
   margin: 0;
   color: var(--mint-900);
+  font-size: 1.4rem;
 }
 
 .plan-card .price {
   margin: 0;
   color: var(--mint-700);
   font-weight: 700;
+  font-size: 1.3rem;
 }
 
 .plan-card ul {
@@ -747,25 +772,37 @@ main > section {
   padding-left: 18px;
   color: var(--gray-500);
   display: grid;
-  gap: 8px;
+  gap: 10px;
+  flex-grow: 1;
+  margin-bottom: 24px;
+}
+
+.plan-card li {
+  line-height: 1.4;
 }
 
 .plan-cta {
-  justify-self: start;
-  padding: 12px 24px;
+  padding: 14px 24px;
   border-radius: 999px;
   background: var(--mint-700);
   color: var(--white);
   font-weight: 600;
+  transition: all 0.3s ease;
+  text-align: center;
+  width: 100%;
+  border: none;
+  font-size: 1rem;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
 }
 
-.faq-items {
-  max-width: var(--max-content);
-  margin: 0 auto;
-  display: grid;
-  gap: 14px;
+.plan-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px -10px rgba(61, 125, 95, 0.7);
 }
-
 /* FAQ cards */
 .faq-card {
   border: 1px solid rgba(25, 80, 45, 0.18);

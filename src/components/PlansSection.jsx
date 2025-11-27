@@ -3,7 +3,7 @@ const PlansSection = ({ plans }) => {
     <section className="plans" id="planes">
       <div className="section-heading">
         <h2>Planes y Pricing</h2>
-        <p>Un plan gratuito para crear confianza y un plan premium para escalar tu laboratorio.</p>
+        <p>Desde validaciones académicas hasta producción industrial. Herramientas de simulación que evolucionan contigo.</p>
       </div>
       <div className="plan-grid">
         {plans.map((plan) => (
