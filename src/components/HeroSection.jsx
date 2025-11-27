@@ -1,4 +1,4 @@
-import visualSelectionSrc from './images/visual-selection.png';
+import visualSelectionSrc from '../assets/images/visual-selection.png';
 
 const HeroSection = () => {
   return (
