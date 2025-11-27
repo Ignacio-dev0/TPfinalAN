@@ -49,7 +49,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
   z-index: 1; /* ensure site content sits above page-level backgrounds */
 }
 
