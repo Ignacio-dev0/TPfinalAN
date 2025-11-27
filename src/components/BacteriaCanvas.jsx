@@ -116,7 +116,7 @@ function createParticle(width, height, reduced = false) {
   const minAmp = Math.max(40, width * 0.06)
   const maxAmp = Math.max(220, width * 0.45)
   let oscAmp = Math.random() * (maxAmp - minAmp) + minAmp
-  let oscSpeed = Math.random() * 1.6 + 0.45 // speed in radians/sec
+  let oscSpeed = Math.random() * 0.8 + 0.4 // speed in radians/sec
 
   if (reduced) {
     // reduce motion intensity for reduced-motion preference but keep them moving
