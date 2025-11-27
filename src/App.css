@@ -54,10 +54,8 @@
 }
 
 .top-bar {
-  position: fixed;
+  position: sticky;
   top: 0;
-  width: 100%;
-  z-index: 9999;
   z-index: 20;
   display: flex;
   align-items: center;
@@ -1173,7 +1171,7 @@ main > section {
 .site > :not(.particles-canvas) { position: relative; z-index: 1 }
 
 /* Keep top-bar higher so it remains sticky above everything */
-.top-bar { z-index: 20 }
+/* .top-bar { z-index: 20 } */
 
 @media (prefers-reduced-motion: reduce) {
   .particles-canvas { opacity: 0.9; }
