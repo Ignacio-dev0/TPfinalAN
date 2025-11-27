@@ -37,21 +37,19 @@ const ContactSection = () => {
 
           <div className="direct-contact">
             <h4>Contacto directo</h4>
-            <div className="contact-methods">
-              <div className="contact-method">
-                <span>📧 Email</span>
-                <a href="mailto:soporte@microbioanalytics.com">soporte@microbioanalytics.com</a>
-              </div>
-              <div className="contact-method">
-                <span>📞 Teléfono</span>
-                <a href="tel:+5401123098765">+54 11 2309 8765</a>
-              </div>
-              <div className="contact-method">
-                <span>💬 WhatsApp</span>
-                <a href="https://wa.me/5491123098765" target="_blank" rel="noreferrer">
-                  +54 9 11 2309 8765
-                </a>
-              </div>
+            <div className="contact-buttons">
+              <a href="mailto:soporte@microbioanalytics.com" className="contact-button email">
+                <span className="contact-icon">✉️</span>
+                <span className="contact-label">Email</span>
+              </a>
+              <a href="tel:+5401123098765" className="contact-button phone">
+                <span className="contact-icon">📞</span>
+                <span className="contact-label">Teléfono</span>
+              </a>
+              <a href="https://wa.me/5491123098765" target="_blank" rel="noreferrer" className="contact-button whatsapp">
+                <span className="contact-icon">💬</span>
+                <span className="contact-label">WhatsApp</span>
+              </a>
             </div>
           </div>
         </div>
@@ -80,7 +78,7 @@ const ContactSection = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="email">Email de trabajo *</label>
+              <label htmlFor="email">Email *</label>
               <input 
                 type="email" 
                 id="email" 
@@ -94,12 +92,8 @@ const ContactSection = () => {
               <select id="country" required>
                 <option value="">Por favor selecciona...</option>
                 <option value="AR">Argentina</option>
-                <option value="BR">Brasil</option>
                 <option value="CL">Chile</option>
-                <option value="CO">Colombia</option>
                 <option value="MX">México</option>
-                <option value="ES">España</option>
-                <option value="US">Estados Unidos</option>
               </select>
             </div>
 
