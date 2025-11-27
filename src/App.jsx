@@ -19,11 +19,6 @@ const faqItems = [
       'Describe el comportamiento esperado del cultivo. El ascenso indica la fase exponencial de crecimiento y el descenso marca el momento en el que la población necesita intervenirse.',
   },
   {
-    title: 'Guía AN Expo Final 1',
-    body:
-      'Integra los controles de calidad microbiológica, los tiempos de muestreo y las métricas que presentamos para la instancia final. El simulador replica los parámetros sugeridos en la guía.',
-  },
-  {
     title: '¿Qué significa “nivel de confianza”?',
     body:
       'Es la probabilidad de que el resultado se mantenga dentro de los márgenes esperados. A mayor nivel, mayor seguridad estadística al tomar decisiones.',
@@ -197,10 +192,11 @@ function App() {
           options={{ mediums: mediumOptions, durations: durationOptions }}
           summary={simulation.metadata}
         />
+        <DownloadSection />
         <PlansSection plans={plans} />
         <FaqSection items={faqItems} />
         <ContactSection />
-        <DownloadSection />
+        
       </main>
 
       <Footer />

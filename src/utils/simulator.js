@@ -97,7 +97,7 @@ export function computeMetrics(series, metadata) {
   const segmentDuration = Math.max(toTime - fromTime, 1)
   const segmentRate = (toValue - fromValue) / segmentDuration
 
-  const summary = `Guía AN Expo Final 6: la población alcanzaría ${finalValue.toFixed(
+  const summary = `La población alcanzaría ${finalValue.toFixed(
     0
   )} ufc en ${totalDays.toFixed(0)} día(s) con una transición suave entre fases.`
   const confidence = Math.min(98, 74 + Math.log10(finalValue + 1) * 6)

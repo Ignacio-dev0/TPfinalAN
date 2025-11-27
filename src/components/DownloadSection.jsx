@@ -2,7 +2,7 @@ const DownloadSection = () => {
   return (
     <section className="download" id="descarga">
       <div className="section-heading">
-        <h2>Descarga de reporte (PDF)</h2>
+        <h2>Descarga de reporte</h2>
         <p>
           Generá un resumen automático con el crecimiento simulado, el nivel de confianza y los intervalos
           analizados.
