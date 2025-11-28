@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import FaqPortad from '../../public/images/FaqPortada.png';
+
 
 const FaqSection = ({ items }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -42,11 +44,7 @@ const FaqSection = ({ items }) => {
 
         {/* Right side - Image */}
         <div className="faq-visual">
-          <img 
-            src="../../public/images/faqPortada.png" 
-            alt="FAQ - Preguntas frecuentes"
-            className="faq-image"
-          />
+          <img src={FaqPortad} alt="FAQ - Preguntas frecuentes" className="faq-image" />
         </div>
       </div>
     </section>
