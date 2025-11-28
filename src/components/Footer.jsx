@@ -12,7 +12,7 @@ const Footer = () => {
         </div>
       </footer>
 
-      <style>{`
+      {/* <style>{`
         
 
         .footer-brand span {
@@ -27,7 +27,7 @@ const Footer = () => {
           opacity: 0.6;
           margin-top: 12px;
         }
-      `}</style>
+      `}</style> */}
     </>
   );
 };

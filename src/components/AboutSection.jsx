@@ -1,7 +1,10 @@
 const AboutSection = () => {
   return (
     <section className="about" id="quienes-somos">
-      <h2 className="section-title reveal" >¿Quiénes somos?</h2>
+      <div className="section-heading">
+        <h2>¿Quienes Somos?</h2>
+        <p>Desde validaciones académicas hasta producción industrial. Herramientas de simulación que evolucionan contigo.</p>
+      </div>
       
       <div className="about-container">
         {/* left visual column */}
