@@ -28,6 +28,11 @@ const faqItems = [
     body:
       'Completa la población inicial, la tasa estimada de crecimiento y la cantidad de intervalos a analizar. Calculamos el volumen proyectado, el nivel de confianza y graficamos la tendencia.',
   },
+  {
+    title: '¿Los datos de mis muestras son confidenciales?',
+    body:
+     'Absolutamente. BioLab Digital utiliza encriptación de extremo a extremo para asegurar que la información sensible de tus cultivos y resultados permanezca privada y accesible solo para usuarios autorizados.'
+  }
 ]
 
 const plans = [

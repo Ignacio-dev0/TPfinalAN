@@ -848,21 +848,102 @@ main > section {
   box-shadow: 0 12px 25px -10px rgba(61, 125, 95, 0.7);
 }
 /* FAQ cards */
+/* FAQ Section Styles */
+.faq {
+  max-width: var(--max-content);
+  margin: 0 auto;
+  padding: clamp(20px, 4vw, 60px) clamp(20px, 3vw, 60px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.faq-container {
+  display: grid;
+  grid-template-columns: minmax(500px, 1fr) minmax(400px, 0.8fr);
+  gap: clamp(32px, 5vw, 60px);
+  align-items: start; /* Cambié de stretch a start */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.faq-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  min-height: 500px; /* Altura mínima para mantener consistencia */
+}
+
+.faq-search {
+  width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 16px 20px;
+  border: 2px solid var(--mint-200);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  background: var(--white);
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-soft);
+  box-sizing: border-box;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--mint-600);
+  box-shadow: 0 0 0 3px rgba(95, 161, 125, 0.2);
+}
+
+.search-input::placeholder {
+  color: var(--gray-400);
+}
+
+.faq-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  /* El contenido puede crecer sin afectar la imagen */
+}
+
+.faq-visual {
+  width: 100%;
+  height: 500px; /* Altura fija para la imagen */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 120px; /* Para que se quede fija al hacer scroll */
+}
+
+.faq-image {
+  width: 100%;
+  height: 95%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  object-fit: cover; /* Mantiene la proporción de la imagen */
+}
+
+/* FAQ cards styles - Actualizado para no afectar el layout */
 .faq-card {
   border: 1px solid rgba(25, 80, 45, 0.18);
   border-radius: calc(var(--radius-md) + 6px);
-  padding: 0; /* padding will be on summary and body for clearer separation */
+  padding: 0;
   background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,245,0.95));
   box-shadow: 0 30px 80px -36px rgba(20, 50, 35, 0.35);
   transition: transform 240ms cubic-bezier(.2,.9,.2,1), box-shadow 240ms ease;
   overflow: hidden;
   position: relative;
-  width: 100%; /* AGREGAR ESTO */
-  box-sizing: border-box; /* AGREGAR ESTO */
+  width: 100%;
+  box-sizing: border-box;
+  /* No permite que la tarjeta afecte el tamaño del contenedor padre */
+  max-height: fit-content;
 }
 
 .faq-card[open] {
-  transform: translateY(-8px) scale(1.01);
+  transform: translateY(-4px) scale(1.005); /* Reducí la transformación */
   box-shadow: 0 40px 110px -40px rgba(20, 50, 35, 0.45);
 }
 
@@ -875,16 +956,16 @@ main > section {
   font-weight: 800;
   cursor: pointer;
   color: var(--mint-900);
-  list-style: none; /* hide default marker */
+  list-style: none;
   user-select: none;
   font-size: clamp(1rem, 1.6vw, 1.15rem);
+  min-height: 60px; /* Altura mínima para el summary */
+  align-items: center;
 }
 
-/* hide native marker in non-WebKit browsers too */
 .faq-card summary::-webkit-details-marker { display: none }
 .faq-card summary::marker { font-size: 0 }
 
-/* arrow/chevron */
 .faq-card summary::before {
   content: '▸';
   display: inline-block;
@@ -906,9 +987,9 @@ main > section {
   line-height: 1.6;
   background: transparent;
   border-top: 1px solid rgba(95,161,125,0.06);
+  /* El contenido del body puede crecer sin problemas */
 }
 
-/* accent stripe on the left to make cards more visible */
 .faq-card::before {
   content: '';
   position: absolute;
@@ -921,10 +1002,52 @@ main > section {
   border-bottom-left-radius: calc(var(--radius-md) + 6px);
 }
 
-/* hover/interaction */
 .faq-card:hover {
-  transform: translateY(-6px) scale(1.01);
+  transform: translateY(-4px) scale(1.005); /* Reducí la transformación */
   box-shadow: 0 48px 120px -50px rgba(20, 50, 35, 0.48);
+}
+
+/* Responsive para FAQ */
+@media (max-width: 880px) {
+  .faq-container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .faq-visual {
+    order: -1;
+    height: 350px; /* Altura reducida en móvil */
+    position: static; /* Quita el sticky en móvil */
+  }
+  
+  .faq-content {
+    min-height: auto; /* Quita la altura mínima en móvil */
+  }
+}
+
+@media (max-width: 600px) {
+  .faq {
+    padding: clamp(20px, 4vw, 40px) clamp(16px, 3vw, 24px);
+  }
+  
+  .search-input {
+    padding: 14px 16px;
+    font-size: 0.95rem;
+  }
+  
+  .faq-card summary {
+    padding: 14px 18px;
+    font-size: 0.95rem;
+    min-height: 50px;
+  }
+  
+  .faq-card-body {
+    padding: 12px 16px 16px;
+  }
+  
+  .faq-visual {
+    height: 280px;
+  }
 }
 
 /* Contact Section Styles - Updated for section-heading */
@@ -958,15 +1081,6 @@ main > section {
   margin: 0 0 12px;
   font-size: clamp(2rem, 3vw, 2.6rem);
   color: var(--mint-900);
-}
-
-.contact .section-heading p {
-  margin: 0;
-  color: var(--gray-500);
-  font-size: 1.05rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /* Left Side - Support Info (Compact) */
