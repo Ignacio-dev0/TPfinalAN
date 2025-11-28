@@ -91,24 +91,34 @@ html {
   animation: slideDown 700ms ease-out;
 }
 
+/* Versión compacta del logo */
+.logo-image {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
 .brand {
   display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-text {
+  display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
 }
 
 .brand .logo-mark {
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--mint-700);
-  font-size: 1.05rem;
-  animation: fadeIn 1s ease both;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 .brand .tagline {
-  font-size: 0.9rem;
-  color: var(--gray-500);
+  font-size: 0.85rem;
+  font-weight: bold;
 }
 
 .navigation {
