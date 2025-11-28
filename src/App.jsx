@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 import './App.css'
 import TopBar from './components/TopBar'
 import BacteriaCanvas from './components/BacteriaCanvas'
@@ -11,6 +11,7 @@ import ContactSection from './components/ContactSection'
 import DownloadSection from './components/DownloadSection'
 import Footer from './components/Footer'
 import { buildCurve, computeMetrics, generateGrowthSeries } from './utils/simulator'
+import initScrollReveal from './utils/scrollReveal' // Asegúrate de que la ruta sea correcta
 
 const faqItems = [
   {
@@ -19,7 +20,7 @@ const faqItems = [
       'Describe el comportamiento esperado del cultivo. El ascenso indica la fase exponencial de crecimiento y el descenso marca el momento en el que la población necesita intervenirse.',
   },
   {
-    title: '¿Qué significa “nivel de confianza”?',
+    title: '¿Qué significa "nivel de confianza"?',
     body:
       'Es la probabilidad de que el resultado se mantenga dentro de los márgenes esperados. A mayor nivel, mayor seguridad estadística al tomar decisiones.',
   },
@@ -128,7 +129,22 @@ const defaultSimulatorInputs = {
 
 function App() {
   const [inputs, setInputs] = useState(() => ({ ...defaultSimulatorInputs }))
-  // canvas-based background (particles) renders behind the UI by default
+
+  // Inicializar scroll reveal cuando el componente se monte
+  useEffect(() => {
+    // Pequeño delay para asegurar que el DOM esté completamente renderizado
+    const timer = setTimeout(() => {
+      initScrollReveal({
+        selector: '.reveal',
+        rootMargin: '0px 0px -50px 0px',
+        threshold: 0.1,
+        once: true,
+        staggerMs: 80
+      });
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const modelInputs = useMemo(() => {
     const temperature = Number.parseFloat(inputs.temperature)
@@ -179,7 +195,6 @@ function App() {
     setInputs(() => ({ ...defaultSimulatorInputs }))
   }
 
-
   return (
     <div className="site">
       <BacteriaCanvas count={220} />
@@ -201,7 +216,6 @@ function App() {
         <PlansSection plans={plans} />
         <FaqSection items={faqItems} />
         <ContactSection />
-        
       </main>
 
       <Footer />
