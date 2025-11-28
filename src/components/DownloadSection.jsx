@@ -1,3 +1,5 @@
+import DescargaImagen from '../../public/images/DescargaImagen.png';
+
 const DownloadSection = () => {
   return (
     <section className="download" id="descarga">
@@ -8,13 +10,22 @@ const DownloadSection = () => {
           analizados.
         </p>
       </div>
-      <div className="download-card">
-        <ul>
-          <li>Resumen ejecutivo con los hallazgos claves</li>
-          <li>Curva gráfica exportada en alta resolución</li>
-          <li>Intervalos analizados y recomendaciones sugeridas</li>
-        </ul>
-        <button type="button">Descargar reporte PDF</button>
+      <div className="download-container">
+        <div className="download-content">
+          <ul>
+            <li>Resumen ejecutivo con los hallazgos claves</li>
+            <li>Curva gráfica exportada en alta resolución</li>
+            <li>Intervalos analizados y recomendaciones sugeridas</li>
+          </ul>
+          <button type="button">Descargar reporte PDF</button>
+        </div>
+        <div className="download-visual">
+          <img 
+            src={DescargaImagen} 
+            alt="Icono de documento PDF" 
+            className="download-image"
+          />
+        </div>
       </div>
     </section>
   )

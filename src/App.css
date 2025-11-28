@@ -1503,46 +1503,186 @@ main > section {
   }
 }
 
-.download-card {
+/* ESTILOS PARA LA SECCIÓN DE DESCARGA - ANIMACIÓN INFINITA */
+.download {
   max-width: var(--max-content);
   margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: clamp(24px, 6vw, 60px);
-  border-radius: var(--radius-lg);
-  padding: clamp(28px, 5vw, 42px);
-  border: 1px solid rgba(95, 161, 125, 0.25);
-  background: linear-gradient(135deg, rgba(229, 241, 234, 0.78), rgba(255, 255, 255, 0.95));
-  box-shadow: var(--shadow-soft);
-  width: 100%; /* AGREGAR ESTO */
-  box-sizing: border-box; /* AGREGAR ESTO */
+  padding: clamp(20px, 4vw, 60px) clamp(20px, 3vw, 60px);
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.download-card ul {
+.download-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.download-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  width: auto;
+  text-align: center;
+  flex: 0 0 auto;
+}
+
+/* LISTA CON TEXTO MÁS GRANDE */
+.download-content ul {
   margin: 0;
-  padding-left: 20px;
+  padding: 0;
   color: var(--gray-500);
   display: grid;
-  gap: 8px;
+  gap: 14px;
+  list-style: none;
 }
 
-.download-card li::marker {
-  color: var(--mint-700);
+.download-content li {
+  line-height: 1.6;
+  position: relative;
+  padding-left: 32px;
+  font-size: 1.1rem;
+  text-align: left;
 }
 
-.download-card button {
-  padding: 12px 26px;
+.download-content li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--mint-600);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* BOTÓN MÁS GRANDE Y MÁS ABAJO */
+.download-content button {
+  padding: 14px 32px;
   border-radius: 999px;
   border: none;
   background: var(--mint-700);
   color: var(--white);
   font-weight: 600;
-  transition: transform 180ms ease;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.2, 1);
+  min-width: 220px;
+  box-shadow: var(--shadow-soft);
+  margin-top: 8px;
 }
 
-.download-card button:hover {
-  transform: translateY(-3px);
+.download-content button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -8px rgba(61, 125, 95, 0.6);
+  background: var(--mint-600);
+}
+
+/* IMAGEN CON ANIMACIÓN INFINITA SIEMPRE */
+.download-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  position: relative;
+  margin-left: 0;
+}
+
+.download-image {
+  width: auto;
+  max-width: 160px;
+  height: auto;
+  border-radius: var(--radius-md);
+  animation: stickerFloatInfinite 4s ease-in-out infinite; /* ANIMACIÓN SIEMPRE ACTIVA */
+  filter: drop-shadow(0 6px 15px rgba(20, 50, 35, 0.15));
+  transition: all 0.3s ease;
+}
+
+.download-image:hover {
+  animation: stickerFloatInfinite 2s ease-in-out infinite; /* MÁS RÁPIDO EN HOVER */
+  filter: drop-shadow(0 10px 25px rgba(20, 50, 35, 0.25));
+  transform: scale(1.08); /* LIGERAMENTE MÁS GRANDE EN HOVER */
+}
+
+/* ANIMACIÓN INFINITA SIEMPRE ACTIVA */
+@keyframes stickerFloatInfinite {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translateY(-8px) rotate(1deg) scale(1.03);
+  }
+  50% {
+    transform: translateY(-4px) rotate(0deg) scale(1);
+  }
+  75% {
+    transform: translateY(-6px) rotate(-1deg) scale(1.01);
+  }
+}
+
+/* TÍTULO CENTRADO */
+.download .section-heading {
+  margin-bottom: clamp(36px, 6vw, 52px);
+  text-align: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .download-container {
+    flex-direction: column;
+    gap: 25px;
+  }
+  
+  .download-visual {
+    order: -1;
+    margin-bottom: 15px;
+  }
+  
+  .download-image {
+    max-width: 140px;
+  }
+  
+  .download-content {
+    gap: 28px;
+  }
+  
+  .download-content ul {
+    gap: 12px;
+  }
+  
+  .download-content li {
+    font-size: 1.05rem;
+    padding-left: 28px;
+  }
+  
+  .download-content button {
+    padding: 12px 28px;
+    font-size: 1rem;
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .download {
+    padding: clamp(20px, 4vw, 40px) clamp(16px, 3vw, 24px);
+  }
+  
+  .download-container {
+    gap: 20px;
+  }
+  
+  .download-image {
+    max-width: 120px;
+  }
+  
+  .download-content li {
+    font-size: 1rem;
+    padding-left: 26px;
+  }
 }
 
 .footer {
