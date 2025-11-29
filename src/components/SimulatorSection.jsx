@@ -231,7 +231,7 @@ const SimulatorSection = () => {
               <div className="panel-results">
                 <div>
                   <span>Crecimiento</span>
-                  <strong>{singleResult.value.toFixed(3)}</strong>
+                  <strong>{singleResult.value.toFixed(5)}</strong>
                 </div>
                 
                 <div>
@@ -353,11 +353,11 @@ const SimulatorSection = () => {
               <div className="panel-results comparison-results">
                 <div>
                   <span>Crecimiento condición A</span>
-                  <strong>{compareResult.r1.value.toFixed(3)}</strong>
+                  <strong>{compareResult.r1.value.toFixed(5)}</strong>
                 </div>
                 <div>
                   <span>Crecimiento condición B</span>
-                  <strong>{compareResult.r2.value.toFixed(3)}</strong>
+                  <strong>{compareResult.r2.value.toFixed(5)}</strong>
                 </div>
                 <div className="comparison-summary">
                   <span>Comparación</span>
