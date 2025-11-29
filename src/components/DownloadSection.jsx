@@ -1,23 +1,23 @@
 import DescargaImagen from '../../public/images/DescargaImagen.png';
+import { generarFolletoBioDigital } from '../utils/generarFolleto';
 const DownloadSection = () => {
   return (
     <section className="download" id="descarga">
       <div className="section-heading">
-        <h2>Descarga de reporte</h2>
+        <h2>Descarga de Folleto</h2>
         <p>
-          Próximamente: descarga de reportes avanzados de simulación.
+          Conocé todos los beneficios de BioDigital Lab para laboratorios e investigadores independientes.
         </p>
       </div>
       <div className="download-container">
         <div className="download-content">
           <ul>
-            <li>Resumen ejecutivo de resultados</li>
-            <li>Visualizaciones y métricas clave</li>
-            <li>Recomendaciones operativas</li>
+            <li>Diseñado para laboratorios pequeños e investigadores independientes</li>
+        
           </ul>
           {/* Botón de descarga deshabilitado temporalmente */}
-          <button type="button" disabled>
-            Descargar reporte PDF
+          <button type="button"  onClick={generarFolletoBioDigital}>
+            Descargar folleto PDF
           </button>
         </div>
         <div className="download-visual">

@@ -15,25 +15,21 @@ import initScrollReveal from './utils/scrollReveal' // Asegúrate de que la ruta
 
 const faqItems = [
   {
-    title: '¿Cómo se interpreta el gráfico?',
+    title: '¿Qué representa el crecimiento que muestra el simulador?',
     body:
-      'Describe el comportamiento esperado del cultivo. El ascenso indica la fase exponencial de crecimiento y el descenso marca el momento en el que la población necesita intervenirse.',
-  },
-  {
-    title: '¿Qué significa "nivel de confianza"?',
-    body:
-      'Es la probabilidad de que el resultado se mantenga dentro de los márgenes esperados. A mayor nivel, mayor seguridad estadística al tomar decisiones.',
+      'El crecimiento es un valor normalizado que indica cómo evoluciona la bacteria en función del tiempo. No tiene unidad y permite comparar fácilmente distintas condiciones experimentales.',
   },
   {
     title: '¿Cómo se usa el simulador?',
     body:
-      'Completa la población inicial, la tasa estimada de crecimiento y la cantidad de intervalos a analizar. Calculamos el volumen proyectado, el nivel de confianza y graficamos la tendencia.',
+      'Seleccioná la temperatura, el tipo de medio y el tiempo que querés analizar. El simulador calcula el crecimiento correspondiente y permite comparar dos condiciones para ver cuál presenta mayor desarrollo.',
   },
   {
-    title: '¿Los datos de mis muestras son confidenciales?',
-    body:
-     'Absolutamente. BioLab Digital utiliza encriptación de extremo a extremo para asegurar que la información sensible de tus cultivos y resultados permanezca privada y accesible solo para usuarios autorizados.'
-  }
+  title: '¿Por qué el simulador indica “crecimiento” o “estancamiento”?',
+  body:
+    'El cultivo tiene una fase inicial donde aumenta rápidamente y una más tardía donde la velocidad disminuye. El simulador identifica automáticamente en qué tramo está el tiempo seleccionado.'
+}
+
 ]
 
 const plans = [
