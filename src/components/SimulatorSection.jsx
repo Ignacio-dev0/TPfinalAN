@@ -417,16 +417,10 @@ const SimulatorSection = () => {
           transform: translateY(-1px);
         }
 
-        .comparison-summary {
-          margin-top: 0.5rem;
-          width: 100%;
-          
-        }
+        
+        
 
-        .comparison-summary strong {
-          display: block;
-          margin-top: 0.2rem;
-        }
+        
       `}</style>
     </section>
   )

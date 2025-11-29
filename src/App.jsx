@@ -15,15 +15,11 @@ import initScrollReveal from './utils/scrollReveal' // Asegúrate de que la ruta
 
 const faqItems = [
   {
-    title: '¿Cómo se interpreta el gráfico?',
+    title: '¿Qué representa el crecimiento que muestra el simulador?',
     body:
-      'Describe el comportamiento esperado del cultivo. El ascenso indica la fase exponencial de crecimiento y el descenso marca el momento en el que la población necesita intervenirse.',
+      'El crecimiento es un valor normalizado que indica cómo evoluciona la bacteria en función del tiempo. No tiene unidad y permite comparar fácilmente distintas condiciones experimentales.',
   },
-  {
-    title: '¿Qué significa "nivel de confianza"?',
-    body:
-      'Es la probabilidad de que el resultado se mantenga dentro de los márgenes esperados. A mayor nivel, mayor seguridad estadística al tomar decisiones.',
-  },
+  
   {
     title: '¿Cómo se usa el simulador?',
     body:
