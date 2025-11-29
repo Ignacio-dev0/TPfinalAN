@@ -171,7 +171,99 @@ const SimulatorSection = () => {
       </div>
 
       <div className="simulator-content">
-        {/* IZQUIERDA: comparación entre condiciones */}
+        {/* IZQUIERDA: calculadora */}
+        <div className="simulator-panel simulator-panel--single">
+          <h2>Calculadora de crecimiento</h2>
+
+          <div className="panel-block">
+            <h3>Simulación por condición</h3>
+            <form
+              onSubmit={(e) => e.preventDefault()}
+              className="experiment-form"
+            >
+              <label>
+                Temperatura (°C)
+                <select
+                  name="temp"
+                  value={singleInput.temp}
+                  onChange={handleSingleChange}
+                >
+                  <option value={25}>25 °C</option>
+                  <option value={30}>30 °C</option>
+                  <option value={37}>37 °C</option>
+                </select>
+              </label>
+
+              <label>
+                Medio de cultivo
+                <select
+                  name="medium"
+                  value={singleInput.medium}
+                  onChange={handleSingleChange}
+                >
+                  <option value="limitado">Limitado</option>
+                  <option value="rico">Rico</option>
+                </select>
+              </label>
+
+              <label>
+                Tiempo (h)
+                <input
+                  type="number"
+                  name="time"
+                  min="0"
+                  step="0.1"
+                  value={singleInput.time}
+                  onChange={handleSingleChange}
+                />
+              </label>
+
+              <button
+                type="button"
+                className="solid primary-button"
+                onClick={handleSingleSimulate}
+              >
+                Calcular crecimiento
+              </button>
+            </form>
+
+            {singleResult && (
+              <div className="panel-results">
+                <div>
+                  <span>Crecimiento</span>
+                  <strong>{singleResult.value.toFixed(3)}</strong>
+                </div>
+                
+                <div>
+                  <span>Fase</span>
+                  <strong>
+                    {singleResult.phase === 'crecimiento'
+                      ? 'Crecimiento'
+                      : 'Estancamiento'}
+                  </strong>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="panel-footer">
+            <p className="panel-caption">
+              El simulador utiliza los datos experimentales cuando están disponibles y recurre a los modelos ajustados
+              para interpolar valores intermedios.
+            </p>
+            <div className="panel-actions">
+              <button
+                type="button"
+                className="ghost secondary-button"
+                onClick={resetAll}
+              >
+                Reset
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* DERECHA: comparación entre condiciones */}
         <div className="simulator-panel simulator-panel--compare">
           <h2>Comparación entre condiciones</h2>
 
@@ -258,133 +350,84 @@ const SimulatorSection = () => {
             </form>
 
             {compareResult && compareResult.r1 && compareResult.r2 && (
-              <div className="panel-results">
+              <div className="panel-results comparison-results">
                 <div>
-                  <span>Condición A</span>
+                  <span>Crecimiento condición A</span>
                   <strong>{compareResult.r1.value.toFixed(3)}</strong>
                 </div>
                 <div>
-                  <span>Condición B</span>
+                  <span>Crecimiento condición B</span>
                   <strong>{compareResult.r2.value.toFixed(3)}</strong>
                 </div>
-                <div>
+                <div className="comparison-summary">
                   <span>Comparación</span>
                   <strong>
                     {compareResult.r1.value > compareResult.r2.value
-                      ? 'A presenta mayor crecimiento en ese tiempo'
+                      ? 'La condición A presenta mayor crecimiento en ese tiempo.'
                       : compareResult.r1.value < compareResult.r2.value
-                      ? 'B presenta mayor crecimiento en ese tiempo'
-                      : 'Ambas condiciones presentan el mismo valor'}
+                      ? 'La condición B presenta mayor crecimiento en ese tiempo.'
+                      : 'Ambas condiciones presentan el mismo crecimiento en ese tiempo.'}
                   </strong>
                 </div>
               </div>
             )}
-          </div>
-        </div>
-
-        {/* DERECHA: simulación de una sola condición */}
-        <div className="simulator-panel simulator-panel--single">
-          <h2>Calculadora de crecimiento</h2>
-
-          <div className="panel-block">
-            <h3>Simulación por condición</h3>
-            <form
-              onSubmit={(e) => e.preventDefault()}
-              className="experiment-form"
-            >
-              <label>
-                Temperatura (°C)
-                <select
-                  name="temp"
-                  value={singleInput.temp}
-                  onChange={handleSingleChange}
-                >
-                  <option value={25}>25 °C</option>
-                  <option value={30}>30 °C</option>
-                  <option value={37}>37 °C</option>
-                </select>
-              </label>
-
-              <label>
-                Medio de cultivo
-                <select
-                  name="medium"
-                  value={singleInput.medium}
-                  onChange={handleSingleChange}
-                >
-                  <option value="limitado">Limitado</option>
-                  <option value="rico">Rico</option>
-                </select>
-              </label>
-
-              <label>
-                Tiempo (h)
-                <input
-                  type="number"
-                  name="time"
-                  min="0"
-                  step="0.1"
-                  value={singleInput.time}
-                  onChange={handleSingleChange}
-                />
-              </label>
-
-              <button
-                type="button"
-                className="solid primary-button"
-                onClick={handleSingleSimulate}
-              >
-                Calcular crecimiento
-              </button>
-            </form>
-
-            {singleResult && (
-              <div className="panel-results">
-                <div>
-                  <span>Valor de crecimiento normalizado</span>
-                  <strong>{singleResult.value.toFixed(3)}</strong>
-                </div>
-                <div>
-                  <span>Fuente</span>
-                  <strong>
-                    {singleResult.source === 'experimental'
-                      ? 'Dato experimental'
-                      : 'Modelo ajustado'}
-                  </strong>
-                </div>
-                <div>
-                  <span>Fase</span>
-                  <strong>
-                    {singleResult.phase === 'crecimiento'
-                      ? 'Crecimiento (fase exponencial)'
-                      : 'Desaceleración (fase lineal)'}
-                  </strong>
-                </div>
-                <div>
-                  <span>Tiempo de corte de la condición</span>
-                  <strong>{singleResult.tCut} h</strong>
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div className="panel-footer">
-            <p className="panel-caption">
-              El simulador utiliza los datos experimentales cuando están disponibles y recurre a los modelos ajustados
-              para interpolar valores intermedios.
-            </p>
-            <div className="panel-actions">
-              <button
-                type="button"
-                className="ghost secondary-button"
-                onClick={resetAll}
-              >
-                Reset
-              </button>
-            </div>
           </div>
         </div>
       </div>
+
+      {/* CSS específico para botones y comparación */}
+      <style>{`
+        .primary-button {
+          border-radius: 999px;
+          padding: 0.55rem 1.3rem;
+          font-weight: 600;
+          border: none;
+          background: linear-gradient(135deg, #2f7f62, #4fbf8a);
+          color: #fff;
+          cursor: pointer;
+          box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+          transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+        }
+
+        .primary-button:hover {
+          filter: brightness(1.06);
+          transform: translateY(-1px);
+          box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+        }
+
+        .primary-button:active {
+          transform: translateY(0);
+          box-shadow: 0 3px 8px rgba(0,0,0,0.18);
+          filter: brightness(0.98);
+        }
+
+        .secondary-button {
+          border-radius: 999px;
+          padding: 0.45rem 1.1rem;
+          font-weight: 500;
+          border: 1px solid #2f7f62;
+          background: transparent;
+          color: #2f7f62;
+          cursor: pointer;
+          transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+        }
+
+        .secondary-button:hover {
+          background: #e6f4ee;
+          transform: translateY(-1px);
+        }
+
+        .comparison-summary {
+          margin-top: 0.5rem;
+          width: 100%;
+          
+        }
+
+        .comparison-summary strong {
+          display: block;
+          margin-top: 0.2rem;
+        }
+      `}</style>
     </section>
   )
 }
