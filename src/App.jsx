@@ -19,11 +19,11 @@ const faqItems = [
     body:
       'El crecimiento es un valor normalizado que indica cómo evoluciona la bacteria en función del tiempo. No tiene unidad y permite comparar fácilmente distintas condiciones experimentales.',
   },
-  
+
   {
     title: '¿Cómo se usa el simulador?',
     body:
-      'Completa la población inicial, la tasa estimada de crecimiento y la cantidad de intervalos a analizar. Calculamos el volumen proyectado, el nivel de confianza y graficamos la tendencia.',
+      'Seleccioná la temperatura, el tipo de medio y el tiempo que querés analizar. El simulador calcula el crecimiento correspondiente y permite comparar dos condiciones para ver cuál presenta mayor desarrollo.',
   },
   {
     title: '¿Los datos de mis muestras son confidenciales?',
