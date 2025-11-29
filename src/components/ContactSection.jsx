@@ -38,15 +38,15 @@ const ContactSection = () => {
           <div className="direct-contact">
             <h4>Contacto directo</h4>
             <div className="contact-buttons">
-              <a href="mailto:soporte@microbioanalytics.com" className="contact-button email">
+              <a href="" className="contact-button email">
                 <span className="contact-icon">✉️</span>
                 <span className="contact-label">Email</span>
               </a>
-              <a href="tel:+5401123098765" className="contact-button phone">
+              <a href="" className="contact-button phone">
                 <span className="contact-icon">📞</span>
                 <span className="contact-label">Teléfono</span>
               </a>
-              <a href="https://wa.me/5491123098765" target="_blank" rel="noreferrer" className="contact-button whatsapp">
+              <a href="" target="_blank" rel="noreferrer" className="contact-button whatsapp">
                 <span className="contact-icon">💬</span>
                 <span className="contact-label">WhatsApp</span>
               </a>
@@ -101,7 +101,7 @@ const ContactSection = () => {
               <label htmlFor="message">¿Algo más?</label>
               <textarea 
                 id="message" 
-                placeholder="¿Cómo estás buscando usar Microbio Analytics?"
+                placeholder="¿Cómo estás buscando usar BioLab Digital?"
                 rows="3"
               ></textarea>
             </div>
