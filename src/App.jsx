@@ -19,17 +19,17 @@ const faqItems = [
     body:
       'El crecimiento es un valor normalizado que indica cómo evoluciona la bacteria en función del tiempo. No tiene unidad y permite comparar fácilmente distintas condiciones experimentales.',
   },
-
   {
     title: '¿Cómo se usa el simulador?',
     body:
       'Seleccioná la temperatura, el tipo de medio y el tiempo que querés analizar. El simulador calcula el crecimiento correspondiente y permite comparar dos condiciones para ver cuál presenta mayor desarrollo.',
   },
   {
-    title: '¿Los datos de mis muestras son confidenciales?',
-    body:
-     'Absolutamente. BioLab Digital utiliza encriptación de extremo a extremo para asegurar que la información sensible de tus cultivos y resultados permanezca privada y accesible solo para usuarios autorizados.'
-  }
+  title: '¿Por qué el simulador indica “crecimiento” o “estancamiento”?',
+  body:
+    'El cultivo tiene una fase inicial donde aumenta rápidamente y una más tardía donde la velocidad disminuye. El simulador identifica automáticamente en qué tramo está el tiempo seleccionado.'
+}
+
 ]
 
 const plans = [
