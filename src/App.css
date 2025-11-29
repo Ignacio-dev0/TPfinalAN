@@ -670,6 +670,8 @@ main > section {
 .panel-results strong {
   color: var(--mint-700);
   font-size: 1.1rem;
+  display: block;
+  grid-column: 1 / -1;
 }
 
 .panel-results p {

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { generarReportePDF } from '../utils/generarReporte'
 import experimentalData from '../data/experimentalData.json'
 
 // 1) Definición de modelos por cluster
@@ -258,6 +259,7 @@ const SimulatorSection = () => {
             </form>
 
             {compareResult && compareResult.r1 && compareResult.r2 && (
+              
               <div className="panel-results">
                 <div>
                   <span>Condición A</span>
@@ -267,17 +269,20 @@ const SimulatorSection = () => {
                   <span>Condición B</span>
                   <strong>{compareResult.r2.value.toFixed(3)}</strong>
                 </div>
-                <div>
-                  <span>Comparación</span>
-                  <strong>
-                    {compareResult.r1.value > compareResult.r2.value
-                      ? 'A presenta mayor crecimiento en ese tiempo'
-                      : compareResult.r1.value < compareResult.r2.value
-                      ? 'B presenta mayor crecimiento en ese tiempo'
-                      : 'Ambas condiciones presentan el mismo valor'}
-                  </strong>
-                </div>
+                
+                <span>Comparación</span>
+                <strong>
+                  {compareResult.r1.value > compareResult.r2.value
+                    ? 'A presenta mayor crecimiento en ese tiempo'
+                    : compareResult.r1.value < compareResult.r2.value
+                    ? 'B presenta mayor crecimiento en ese tiempo'
+                    : 'Ambas condiciones presentan el mismo valor'}
+                </strong>
+              
+              
               </div>
+              
+            
             )}
           </div>
         </div>
@@ -363,6 +368,20 @@ const SimulatorSection = () => {
                 <div>
                   <span>Tiempo de corte de la condición</span>
                   <strong>{singleResult.tCut} h</strong>
+                </div>
+                <div>
+                  <button
+                    type="button"
+                    className="solid"
+                    onClick={() => generarReportePDF({
+                      temp: singleInput.temp,
+                      medium: singleInput.medium,
+                      time: singleInput.time,
+                      result: singleResult,
+                    })}
+                  >
+                    Exportar PDF
+                  </button>
                 </div>
               </div>
             )}
